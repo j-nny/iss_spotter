@@ -1,4 +1,4 @@
-const { fetchMyIP, fetchCoordsByIP } = require('./iss');
+const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require('./iss');
 
 fetchMyIP((error, ip) => {
   if (error) {
@@ -9,10 +9,20 @@ fetchMyIP((error, ip) => {
   }
 });
 
-fetchCoordsByIP('162.245.144.188', (error, latLong) => {
+fetchCoordsByIP('162.245.144.188', (error, coords) => {
   if (error) {
     console.log('Error: ', error);
     return;
+  } else {
+  console.log(coords);
   }
-    console.log(latLong);
+});
+
+fetchISSFlyOverTimes( { latitude: '49.26200', longitude: '-123.09230' }, (error, response) => {
+  if (error) {
+    console.log('Error: ', error);
+    return;
+  } else {
+  console.log(response);
+  }
 });
